@@ -1,0 +1,35 @@
+html {
+  font-family: sans-serif;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  width: 100px;
+  height: 100px;
+  background-color: #f7f7f7;
+  border: 1px solid white;
+}
+
+.cell.active {
+  border: 1px solid black;
+}
+
+.cell.correct {
+  background-color: greenyellow;
+}
+
+.cell.false {
+  background-color: red;
+}
+
+.cell.position {
+  background-color: orange;
+}
