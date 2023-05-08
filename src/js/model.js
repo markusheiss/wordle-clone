@@ -24,7 +24,7 @@ const model = {
     done: false,
     currRow: 0,
     currCell: 0,
-    secretWord: 'speed',
+    secretWord: 'mards',
   },
 
   addKey(key) {
@@ -80,6 +80,19 @@ const model = {
     return count;
   },
 
+  otherCorrectPosition(char, guess, index) {
+    console.log('');
+    let word = Array.from(guess);
+    word[index] = ' ';
+    word = word.join('');
+    console.log(word, char);
+
+    for (let i = 0; i < word.length; i++) {
+      if (char === word[i]) return true;
+    }
+    return false;
+  },
+
   evaluateRow() {
     if (this.state.rowEvaluated) return;
     const data = [];
@@ -95,7 +108,8 @@ const model = {
       } else if (
         this.state.secretWord.includes(row[i]) &&
         (guessed[row[i]] < this.countChars(row[i]) ||
-          guessed[row[i]] === undefined)
+          guessed[row[i]] === undefined) &&
+        !this.otherCorrectPosition(row[i], row.join(''), i)
       ) {
         data.push('position');
         if (!this.state.keyboard[row[i]])
@@ -111,7 +125,6 @@ const model = {
     this.state.validation[this.state.currRow - 1] = data;
 
     this.state.done = row.join('') === this.state.secretWord;
-    console.log(this.state.done);
 
     this.saveState();
     return true;

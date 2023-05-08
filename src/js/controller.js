@@ -49,7 +49,7 @@ const handleKeyboardClick = function (key) {
 
 const init = function () {
   model.checkLocalStorage();
-  model.chooseSecretWord(words);
+  // model.chooseSecretWord(words);
   keyboardView.render(model.state.keyboard);
   keyboardView.addHandlerClick(handleKeyboardClick);
   toggleView.render();
@@ -58,8 +58,6 @@ const init = function () {
     boardView.selectCell(model.state.currRow, model.state.currCell);
   boardView.addHandlerKeydown(handleKeyStroke);
   boardView.addHandlerClick(handleBoardClick);
-
-  console.log(model.state.secretWord);
 };
 
 init();
