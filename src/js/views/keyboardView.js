@@ -40,6 +40,10 @@ class KeyboardView {
       handler(el);
     });
   }
+
+  clear() {
+    this._parentEl.innerHTML = '';
+  }
 }
 
 export default new KeyboardView();
