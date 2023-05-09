@@ -161,6 +161,23 @@ body.dark .key.position {
   }
 }
 
+.secret {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 1.2rem;
+  font-size: 2.4rem;
+  margin-top: 1.8rem;
+  padding: 1.6rem;
+  background-color: var(--midlightg);
+  border-radius: 6px;
+  max-width: 40rem;
+}
+
+.word {
+  font-weight: 800;
+}
+
 /* ------------------------------------------------- */
 /* KEYBOARD */
 /* ------------------------------------------------- */
@@ -243,6 +260,10 @@ body.dark .key {
   .cell {
     width: 48px;
     height: 48px;
+  }
+
+  .secret {
+    font-size: 1.8rem;
   }
 
   .key {

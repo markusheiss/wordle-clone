@@ -85,6 +85,13 @@ class BoardView {
       500
     );
   }
+
+  viewSecretWord(word) {
+    const el = document.createElement('div');
+    el.classList.add('secret');
+    el.innerHTML = `<span>You didn't guessed The word 🙁</span><span>It was <span class="word">${word}</span>!</span><span>Come back tomorrow and guess a new word 😉</span>`;
+    this._parentEl.parentNode.insertBefore(el, this._parentEl.nextSibling);
+  }
 }
 
 export default new BoardView();

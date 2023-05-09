@@ -81,11 +81,9 @@ const model = {
   },
 
   otherCorrectPosition(char, guess, index) {
-    console.log('');
     let word = Array.from(guess);
     word[index] = ' ';
     word = word.join('');
-    console.log(word, char);
 
     for (let i = 0; i < word.length; i++) {
       if (char === word[i]) return true;
@@ -124,7 +122,10 @@ const model = {
     this.state.rowEvaluated = true;
     this.state.validation[this.state.currRow - 1] = data;
 
-    this.state.done = row.join('') === this.state.secretWord;
+    console.log(this.state.currRow);
+
+    this.state.done =
+      row.join('') === this.state.secretWord || this.state.currRow === 6;
 
     this.saveState();
     return true;

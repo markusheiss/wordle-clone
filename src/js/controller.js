@@ -22,7 +22,13 @@ const handleKeyStroke = function (key) {
   if (key === ' ') {
     model.setCurrentCell(model.state.currRow * 5);
   }
+
+  console.log(model.state.done);
+
   boardView.render(model.state.board, model.state.validation);
+  if (model.state.done) {
+    boardView.viewSecretWord(model.state.secretWord);
+  }
   keyboardView.render(model.state.keyboard);
   if (model.state.rowEvaluated && !model.state.done)
     boardView.selectCell(model.state.currRow, model.state.currCell);
@@ -56,6 +62,7 @@ const init = function () {
   boardView.render(model.state.board, model.state.validation);
   if (!model.state.done)
     boardView.selectCell(model.state.currRow, model.state.currCell);
+  else boardView.viewSecretWord(model.state.secretWord);
   boardView.addHandlerKeydown(handleKeyStroke);
   boardView.addHandlerClick(handleBoardClick);
 };
