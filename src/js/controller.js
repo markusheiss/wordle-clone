@@ -49,7 +49,7 @@ const handleKeyboardClick = function (key) {
 
 const init = function () {
   model.checkLocalStorage();
-  // model.chooseSecretWord(words);
+  model.chooseSecretWord(words);
   keyboardView.render(model.state.keyboard);
   keyboardView.addHandlerClick(handleKeyboardClick);
   toggleView.render();
