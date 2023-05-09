@@ -1,5 +1,6 @@
 class BoardView {
   _parentEl = document.querySelector('#board-container');
+  displaySecret = false;
 
   render(boardState, boardValidation) {
     let html = '';
@@ -87,6 +88,8 @@ class BoardView {
   }
 
   viewSecretWord(word) {
+    if (this.displaySecret) return;
+    this.displaySecret = true;
     const el = document.createElement('div');
     el.classList.add('secret');
     el.innerHTML = `<span>You didn't guessed The word 🙁</span><span>It was <span class="word">${word}</span>!</span><span>Come back tomorrow and guess a new word 😉</span>`;
