@@ -174,6 +174,10 @@ body.dark .key.position {
   max-width: 40rem;
 }
 
+body.dark .secret {
+  color: var(--darkg);
+}
+
 .word {
   font-weight: 800;
 }
