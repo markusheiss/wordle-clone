@@ -25,10 +25,16 @@ const handleKeyStroke = function (key) {
 
   console.log(model.state.done);
 
-  boardView.render(model.state.board, model.state.validation);
+  boardView.render(
+    model.state.board,
+    model.state.validation,
+    model.state.done,
+    model.state.win,
+    model.state.secretWord
+  );
   keyboardView.render(model.state.keyboard);
   if (model.state.done) {
-    boardView.viewSecretWord(model.state.secretWord);
+    // boardView.viewSecretWord(model.state.secretWord);
     keyboardView.clear();
   }
   if (model.state.rowEvaluated && !model.state.done)
@@ -60,15 +66,17 @@ const init = function () {
   keyboardView.render(model.state.keyboard);
   keyboardView.addHandlerClick(handleKeyboardClick);
   toggleView.render();
-  boardView.render(model.state.board, model.state.validation);
-  if (!model.state.done)
-    boardView.selectCell(model.state.currRow, model.state.currCell);
-  else {
-    boardView.viewSecretWord(model.state.secretWord);
-    keyboardView.clear();
-  }
+  boardView.render(
+    model.state.board,
+    model.state.validation,
+    model.state.done,
+    model.state.win,
+    model.state.secretWord
+  );
+  if (model.state.done) keyboardView.clear();
   boardView.addHandlerKeydown(handleKeyStroke);
   boardView.addHandlerClick(handleBoardClick);
+  console.log(model.state.secretWord);
 };
 
 init();

@@ -2,7 +2,7 @@ class BoardView {
   _parentEl = document.querySelector('#board-container');
   displaySecret = false;
 
-  render(boardState, boardValidation) {
+  render(boardState, boardValidation, done, win, secretWord) {
     let html = '';
 
     for (let row = 0; row < 6; row++) {
@@ -13,6 +13,10 @@ class BoardView {
 
     this._parentEl.innerHTML = '';
     this._parentEl.insertAdjacentHTML('beforeend', html);
+
+    if (done) {
+      this.viewSecretWord(secretWord, win);
+    }
   }
 
   invalidRowOrCell(row, cell) {
@@ -87,12 +91,15 @@ class BoardView {
     );
   }
 
-  viewSecretWord(word) {
+  viewSecretWord(word, win) {
     if (this.displaySecret) return;
     this.displaySecret = true;
     const el = document.createElement('div');
     el.classList.add('secret');
-    el.innerHTML = `<span>You didn't guessed The word 🙁</span><span>It was <span class="word">${word}</span>!</span><span>Come back tomorrow and guess a new word 😉</span>`;
+    if (!win)
+      el.innerHTML = `<span>You didn't guessed The word 🙁</span><span>It was <span class="word">${word}</span>!</span><span>Come back tomorrow and guess a new word 😉</span>`;
+    else
+      el.innerHTML = `<span>You guessed the word 👍</span><span>It was <span class="word">${word}</span>!</span><span>Come back tomorrow and guess a new word 😉</span>`;
     this._parentEl.parentNode.insertBefore(el, this._parentEl.nextSibling);
   }
 }

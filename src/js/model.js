@@ -22,6 +22,7 @@ const model = {
     keyboard: {},
     rowEvaluated: true,
     done: false,
+    win: false,
     currRow: 0,
     currCell: 0,
     secretWord: 'mards',
@@ -126,6 +127,7 @@ const model = {
 
     this.state.done =
       row.join('') === this.state.secretWord || this.state.currRow === 6;
+    this.state.win = row.join('') === this.state.secretWord;
 
     this.saveState();
     return true;
